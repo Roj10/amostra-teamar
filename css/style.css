@@ -1,0 +1,192 @@
+/* ///////////////////////// CSS das páginas ///////////////////////// */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo base para todas as páginas */
+.pagina {
+    min-height: 100vh;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#primeira-pagina {
+    background-image: url(/img/fundo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Organização do conteúdo dentro da primeira página */
+#primeira-pagina .apresentacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "botao  logo"
+        "botao logo";
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #primeira-pagina .apresentacao {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+            "logo"
+            "botao";
+    }
+
+    .apresentacao .button a {
+        flex: 1 1 100%; /* Botões ocupam toda a largura da tela em dispositivos menores */
+    }
+
+    #logo {
+        max-width: 70%;
+    }
+}
+
+#primeira-pagina h1 {
+    font-size: 8vw; /* Escalável em telas menores */
+    color: #00796b; /* Tom verde escuro */
+}
+
+/* ///////////////////////// CSS da navbar ///////////////////////// */
+
+/* Botão para abrir o menu */
+.nav-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn:hover {
+    background-color: #004d40;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100%;
+    width: 0; /* Largura inicial */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.3s; /* Animação suave ao abrir/fechar */
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    padding: 10px 15px; /* Espaçamento interno */
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 20px;
+    color: white; /* Cor do texto */
+    display: block; /* Links em bloco */
+    transition: 0.3s;
+}
+
+.sidebar summary {
+    padding: 10px 15px; /* Espaçamento interno */
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 20px;
+    color: white; /* Cor do texto */
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.sidebar details a {
+    background-color: #292929;;
+}
+
+.sidebar summary:hover {
+    background-color: #575757;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* Botão para fechar o menu */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* ///////////////////////// Ajuste das imagens ///////////////////////// */
+
+#logo {
+    max-width: 100%; /* Tamanho ajustável */
+    height: auto; /* Mantém a proporção */
+}
+
+.img-logo {
+    grid-area: logo; /* Ajusta a imagem à área da grade */
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+}
+
+/* ///////////////////////// Ajuste dos textos ///////////////////////// */
+
+
+/* ///////////////////////// Ajuste dos botões ///////////////////////// */
+
+.apresentacao .button {
+    grid-area: botao; /* Alinha os botões na área da grade */
+    display: flex; /* Habilita o uso de flexbox */
+    flex-wrap: wrap; /* Permite que os botões quebrem linha, se necessário */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    align-items: center; /* Centraliza os botões verticalmente */
+    gap: 1rem; /* Espaçamento entre os botões */
+    margin: 1rem; /* Espaçamento externo ao redor */
+}
+
+.apresentacao .button a {
+    display: inline-block; /* Faz com que o link tenha comportamento de botão */
+    padding: 15px 30px; /* Define o tamanho interno do botão */
+    background-color: #00796b; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 1rem; /* Tamanho da fonte ajustável */
+    border-radius: 10px; /* Bordas arredondadas */
+    transition: background-color 0.5s, transform 0.5s; /* Animações */
+    text-align: center; /* Centraliza o texto no botão */
+    flex: 1 1 calc(33.33% - 2rem); /* Torna os botões responsivos */
+    max-width: 200px; /* Limita o tamanho máximo de cada botão */
+    min-width: 120px; /* Define o tamanho mínimo dos botões */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve */
+}
+
+.apresentacao .button a:hover {
+    background-color: #004d40; /* Muda a cor ao passar o mouse */
+    transform: scale(1.05); /* Aumenta levemente o botão */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Realça a sombra */
+}
