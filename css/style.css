@@ -11,9 +11,6 @@ body {
     text-align: center;
     padding: 1rem;
     box-sizing: border-box;
-}
-
-#primeira-pagina {
     background: url(/img/fundo.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -54,6 +51,10 @@ body {
 #primeira-pagina h1 {
     font-size: 8vw; /* Escalável em telas menores */
     color: #00796b; /* Tom verde escuro */
+}
+
+#segunda-pagina {
+    background: none;
 }
 
 /* ///////////////////////// CSS da navbar ///////////////////////// */
