@@ -11,7 +11,7 @@ body {
     text-align: center;
     padding: 1rem;
     box-sizing: border-box;
-    background-image: url(/img/fundo.png);
+    background: url(/img/fundo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
