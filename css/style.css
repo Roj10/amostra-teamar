@@ -11,13 +11,14 @@ body {
     text-align: center;
     padding: 1rem;
     box-sizing: border-box;
-}
-
-#primeira-pagina {
     background-image: url(/img/fundo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+#segunda-pagina {
+    background-image: none;
 }
 
 /* Organização do conteúdo dentro da primeira página */
