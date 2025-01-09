@@ -14,10 +14,40 @@ body {
 }
 
 #primeira-pagina {
-    background-image: url(/img/fundo.png);
+    background: url(/img/fundo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+#segunda-pagina {
+    position: relative; /* Necessário para o efeito */
+    color: #333; /* Cor do texto */
+    padding: 2rem; /* Espaçamento interno */
+    display: flex; /* Torna a página flexível */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    text-align: left; /* Alinha o texto à esquerda */
+    overflow: hidden; /* Garante que o pseudo-elemento não extrapole os limites */
+}
+
+#segunda-pagina::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(/img/macacos.png) no-repeat top center; /* Imagem de fundo */
+    background-size: cover;
+    filter: blur(10px); /* Desfoque aplicado */
+    z-index: -1; /* Ficar atrás do conteúdo */
+    opacity: 0.7; /* Ajuste a opacidade, se necessário */
+}
+
+#segunda-pagina .apresentacao {
+    position: relative; /* Garante que o conteúdo fique acima do fundo borrado */
+    z-index: 1; /* Coloca o conteúdo acima do fundo borrado */
 }
 
 /* Organização do conteúdo dentro da primeira página */
@@ -26,8 +56,8 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas: 
-        "botao  logo"
-        "botao logo";
+        " auto auto"
+        "botao botao";
     gap: 1rem;
     align-items: center;
 }
@@ -38,7 +68,7 @@ body {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
         grid-template-areas: 
-            "logo"
+            "auto"
             "botao";
     }
 
@@ -48,6 +78,40 @@ body {
 
     #logo {
         max-width: 70%;
+    }
+}
+
+/* Organização do conteúdo dentro da primeira página */
+#segunda-pagina .apresentacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        " texto img"
+        "texto img";
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #segunda-pagina .apresentacao {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 
+            "img"
+            "img"
+            "texto";
+    }
+
+    .image-container {
+        width: 100vh;
+        width: 100vw;
+    }
+    .apresentacao {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -90,6 +154,7 @@ body {
     transition: 0.3s; /* Animação suave ao abrir/fechar */
     padding-top: 60px;
     box-sizing: border-box;
+    z-index: 10000; /* Garantir que esteja acima de outros elementos */
 }
 
 .sidebar h2 {
@@ -154,6 +219,14 @@ body {
     margin: 2rem auto;
 }
 
+.img {
+    grid-area: img; /* Ajusta a imagem à área da grade */
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    max-height: 100vw;
+}
+
 /* ///////////////////////// Ajuste dos textos ///////////////////////// */
 
 
@@ -167,6 +240,11 @@ body {
     align-items: center; /* Centraliza os botões verticalmente */
     gap: 1rem; /* Espaçamento entre os botões */
     margin: 1rem; /* Espaçamento externo ao redor */
+    position: absolute; /* Torna a posição absoluta */
+    bottom: 0; /* Alinha os botões ao rodapé */
+    left: 0;
+    right: 0;
+    padding: 1rem;
 }
 
 .apresentacao .button a {
@@ -189,4 +267,77 @@ body {
     background-color: #004d40; /* Muda a cor ao passar o mouse */
     transform: scale(1.05); /* Aumenta levemente o botão */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Realça a sombra */
+}
+
+.texto {
+    grid-area: texto;
+    background-color: #ffffff; /* Fundo branco para contraste */
+    padding: 2rem; /* Espaçamento interno */
+    max-width: 100vh; /* Largura máxima do conteúdo */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    line-height: 1.8; /* Espaçamento entre linhas */
+    font-size: 1rem; /* Tamanho do texto */
+}
+
+#segunda-pagina .apresentacao p {
+    margin: 1.5rem; /* Remove margens padrão */
+    color: #00796b; /* Cor dos links */
+    font-weight: bold; /* Destaca os links */
+}
+
+#segunda-pagina .apresentacao a {
+    color: #0066ff; /* Cor dos links */
+    font-weight: bold; /* Destaca os links */
+}
+
+.image-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para todas as imagens no contêiner */
+.image-container img {
+    position: absolute;
+    width: 70%;
+    height: 95vh;
+    object-fit: contain; /* Ajusta a imagem dentro do contêiner */
+    object-position: center; /* Centraliza a imagem */
+    opacity: 0;
+    animation: fade 16s infinite; /* Ciclo total: 4 imagens * 4 segundos */
+    transition: opacity 1.5s ease-in-out; /* Transição suave */
+}
+
+/* Primeira imagem: aparece nos primeiros 4 segundos */
+.image-container img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+/* Segunda imagem: aparece entre 4 e 8 segundos */
+.image-container img:nth-child(2) {
+    animation-delay: 4s;
+}
+
+/* Terceira imagem: aparece entre 8 e 12 segundos */
+.image-container img:nth-child(3) {
+    animation-delay: 8s;
+}
+
+/* Quarta imagem: aparece entre 12 e 16 segundos */
+.image-container img:nth-child(4) {
+    animation-delay: 12s;
+}
+
+/* Animação de opacidade */
+@keyframes fade {
+    0%, 20% {
+        opacity: 1; /* Imagem totalmente visível */
+    }
+    25%, 95% {
+        opacity: 0; /* Imagem desaparecendo suavemente */
+    }
 }
