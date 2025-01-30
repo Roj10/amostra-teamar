@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="css/Equipe_multidisciplinar.css">
+    <script src="js/script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/TEAMAR_logo.png">
+    <title>teamarlajedo</title>
+</head>
+
+<body>
+    <!-- Barra de navegação do site -->
+    <nav class="sidebar" id="sidebar">
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <h2>Menu</h2>
+        <a href="index.html">Home</a>
+        <details>
+            <summary>Responsáveis</summary>
+            <a href="rafaela.html">Dra. Rafaela Dourado</a>
+            <a href="thiago.html">Dr. Thiago Lima</a>
+        </details>
+        <a href="Equipe_multidisciplinar.html">Equipe multidisciplinar</a>
+        <a href="Medicos.html">Médicos</a>
+        <a href="vacinas.html">Vacinas</a>
+    </nav>
+    <button id="openBtn" class="nav-btn">☰ Abrir Menu</button>
+
+    <div class="container">
+        <div class="grid">
+            <!-- Botões -->
+            <button onclick="showText('Pediatras cuidam da saúde e do desenvolvimento da criança, tratando doenças e promovendo o bem-estar.')">Pediatria</button>
+            <button onclick="showText('A neuropsiquiatria estuda e trata distúrbios que afetam cérebro, mente e comportamento. Atua em adultos e crianças, unindo neurologia e psiquiatria')">Neuro Psiquiatria (adulto e infantil)</button>
+            <button onclick="showText('Cardiologistas cuidam do coração e do sistema cardiovascular.')">Cardiologista</button>
+            <button onclick="showText('Ortopedistas tratam ossos, músculos e articulações.')">Ortopedista</button>
+            <button onclick="showText('Endocrinologistas cuidam das glândulas e hormônios do corpo.')">Endocrinologista</button>
+            <button onclick="showText('Cuidam de problemas no ouvido, nariz e garganta.')">Otorrino</button>
+            <button onclick="showText('Mastologistas tratam doenças da mama, como o câncer')">Mastologista</button>
+            <button onclick="showText('Tratam doenças do sistema digestivo, como refluxo e hepatites.')">Gastroenterologista</button>
+            <button onclick="showText('Neurologistas tratam doenças do sistema nervoso, como epilepsia e Parkinson.')">Neurologista</button>
+            <button onclick="showText('Ginecologistas cuidam da saúde íntima feminina e do aparelho')">Ginecologia</button>
+        </div>
+
+        <!-- Texto dinâmico -->
+        <div class="response">
+            <p id="dynamic-text">Clique em um botão para saber mais sobre a Equipe multidisciplinar.</p>
+        </div>
+    </div>
+
+    <!-- Pop-up para resposta em resoluções menores -->
+    <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">&times;</button>
+        <p id="popup-text">Texto da resposta.</p>
+    </div>
+
+    <script>
+        function showText(responseText) {
+            const dynamicText = document.getElementById("dynamic-text");
+            const popupText = document.getElementById("popup-text");
+            const popup = document.getElementById("popup");
+
+            if (window.innerWidth <= 768) {
+                // Para resoluções menores, mostra o pop-up
+                popupText.textContent = responseText;
+                popup.classList.add("active");
+            } else {
+                // Para resoluções maiores, atualiza o texto normal
+                dynamicText.textContent = responseText;
+            }
+        }
+
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.classList.remove("active");
+        }
+    </script>
+</body>
+
+</html>

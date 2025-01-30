@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Botão para abrir o menu */
+.nav-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn:hover {
+    background-color: #004d40;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100%;
+    width: 0; /* Largura inicial */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.3s; /* Animação suave ao abrir/fechar */
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    padding: 10px 15px; /* Espaçamento interno */
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 20px;
+    color: white; /* Cor do texto */
+    display: block; /* Links em bloco */
+    transition: 0.3s;
+}
+
+.sidebar summary {
+    padding: 10px 15px; /* Espaçamento interno */
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 20px;
+    color: white; /* Cor do texto */
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.sidebar details a {
+    background-color: #292929;;
+}
+
+.sidebar summary:hover {
+    background-color: #575757;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* Botão para fechar o menu */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
